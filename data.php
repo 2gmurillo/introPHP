@@ -9,9 +9,7 @@ $location = 'Medellín, Colombia';
 $profilePicture = './app/assets/static/Juango.png';
 $profileDescription = '4 años de experiencia en el campo de la automatización industrial, 4 años desarrollando habilidades y conocimientos que ayudaron a proyectarme y a despertar un gran interés por aprender y aplicar nuevas tecnologías.';
 
-require_once('./app/Models/Job.php');
-require_once('./app/Models/Project.php');
-require_once('./lib1/Project.php');
+require_once('./vendor/autoload.php');
 
 use App\Models\{Job, Project};
 
@@ -26,8 +24,6 @@ $job3->functions = ['Desing', 'Programming', 'Customer Training'];
 $project1 = new Project('Evertec', 'Planeación', './app/assets/static/creativity.jpg');
 $project2 = new Project('Evertec', 'Desarrollo', './app/assets/static/coding.jpg');
 $project3 = new Project('Evertec', 'Resultados', './app/assets/static/hexagon.jpg');
-
-$project4 = new Lib1\Project();
 
 $jobs = [
     $job1,
