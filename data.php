@@ -1,4 +1,27 @@
 <?php
+
+use Illuminate\Database\Capsule\Manager as Capsule;
+use App\Models\{Job, Project};
+
+$capsule = new Capsule;
+
+$capsule->addConnection([
+    'driver'    => 'mysql',
+    'host'      => 'localhost',
+    'database'  => 'intro_db',
+    'username'  => 'root',
+    'password'  => '',
+    'charset'   => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix'    => '',
+]);
+
+// Make this Capsule instance available globally via static methods... (optional)
+$capsule->setAsGlobal();
+
+// Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
+$capsule->bootEloquent();
+
 $brand = 'JUANGO';
 $name = 'Juan Gonzalo Murillo Muñoz';
 $profession = 'Desarrollador Jr.';
@@ -9,30 +32,33 @@ $location = 'Medellín, Colombia';
 $profilePicture = './app/assets/static/Juango.png';
 $profileDescription = '4 años de experiencia en el campo de la automatización industrial, 4 años desarrollando habilidades y conocimientos que ayudaron a proyectarme y a despertar un gran interés por aprender y aplicar nuevas tecnologías.';
 
-require_once('./vendor/autoload.php');
+$jobs = Job::all();
+$projects = Project::all();
+?>
 
-use App\Models\{Job, Project};
-
-$job1 = new Job('Evertec 2020', 'Desarrollador Jr.', './app/assets/static/hacker.jpg', 1);
-$job2 = new Job('Ingeneumática 2018', 'Lider de automatización', './app/assets/static/proyectoFEA2.png', 30);
-$job3 = new Job('', 'Auxiliar de Producción', './app/assets/static/robot.jpg', 12);
-
-$job1->functions = ['Desing', 'Programming', 'Customer Training'];
-$job2->functions = ['Desing', 'Programming', 'Customer Training'];
-$job3->functions = ['Desing', 'Programming', 'Customer Training'];
-
-$project1 = new Project('Evertec', 'Planeación', './app/assets/static/creativity.jpg');
-$project2 = new Project('Evertec', 'Desarrollo', './app/assets/static/coding.jpg');
-$project3 = new Project('Evertec', 'Resultados', './app/assets/static/hexagon.jpg');
-
-$jobs = [
-    $job1,
-    $job2,
-    $job3,
-];
-
-$projects = [
-    $project1,
-    $project2,
-    $project3,
-];
+<?php function printArray($array)
+{ ?>
+    <?php foreach ($array as $job) { ?>
+        <?php if ($job->visible == false) {
+            continue;
+        } ?>
+        <div class="card">
+            <div class="card__image">
+                <img src=<?php echo './app/assets/static/' . $job->picture ?> alt="">
+            </div>
+            <div class="card__description">
+                <h3><?= $job->title ?></h3>
+                <p><?= $job->company ?></p>
+            </div>
+            <div class="card__details">
+                <h3><?= $job->getDurationAsString(); ?></h3>
+                <h4>Funciones:</h4>
+                <ul>
+                    <li><?= $job->function1 ?></li>
+                    <li><?= $job->function2 ?></li>
+                    <li><?= $job->function3 ?></li>
+                </ul>
+            </div>
+        </div>
+    <?php } ?>
+<?php } ?>

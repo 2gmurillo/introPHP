@@ -23,11 +23,12 @@ body {
 }
 .container form input {
   width: 500px;
-  height: 80px;
-  margin: 10px 0;
+  height: 70px;
+  margin: 5px 0;
   border-radius: 10px;
-  font-size: calc(0.5em + 1vw);
+  font-size: 36px;
   padding-left: 15px;
+  padding-right: 15px;
   border: none;
 }
 .btn {

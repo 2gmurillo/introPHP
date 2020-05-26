@@ -1,32 +1,11 @@
 <?php
+require_once('./vendor/autoload.php');
 require_once('./data.php');
+// echo "<script>console.log('Jobs: " . $jobs . "' );</script>";
+// echo "<script>console.log('Projects: " . $projects . "' );</script>";
+
 ?>
-<?php function printArray($array)
-{ ?>
-    <?php foreach ($array as $element) { ?>
-        <?php if ($element->visible == false) {
-            continue;
-        } ?>
-        <div class="card">
-            <div class="card__image">
-                <img src=<?= $element->picture ?> alt="">
-            </div>
-            <div class="card__description">
-                <h3><?= $element->title ?></h3>
-                <p><?= $element->getCompany() ?></p>
-            </div>
-            <div class="card__details">
-                <h3><?= $element->getDurationAsString(); ?></h3>
-                <h4>Funciones:</h4>
-                <ul>
-                    <?php foreach ($element->functions as $function) { ?>
-                        <li><?= $function ?></li>
-                    <?php } ?>
-                </ul>
-            </div>
-        </div>
-    <?php } ?>
-<?php } ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -100,18 +79,18 @@ require_once('./data.php');
                             <h2>Projects</h2>
                         </div>
                         <div class="projects__experience">
-                            <?php foreach ($projects as $element) { ?>
-                                <?php if ($element->visible == false) {
+                            <?php foreach ($projects as $project) { ?>
+                                <?php if ($project->visible == false) {
                                     continue;
                                 } ?>
                                 <div class="card2">
                                     <div class="card2__image">
-                                        <img src=<?= $element->picture ?> alt="">
+                                        <img src=<?php echo './app/assets/static/' . $project->picture ?> alt="">
                                     </div>
                                     <div class="card2__description">
                                         <div class="card2__description--container">
-                                            <h3><?= $element->title ?></h3>
-                                            <p><?= $element->getCompany() ?></p>
+                                            <h3><?= $project->title ?></h3>
+                                            <p><?= $project->company ?></p>
                                             <button class="btn">Ver</button>
                                         </div>
                                     </div>
