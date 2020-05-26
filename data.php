@@ -13,7 +13,7 @@ require_once('./vendor/autoload.php');
 
 use App\Models\{Job, Project};
 
-$job1 = new Job('Evertec 2020', 'Desarrollador Jr.', './app/assets/static/hacker.jpg', 24);
+$job1 = new Job('Evertec 2020', 'Desarrollador Jr.', './app/assets/static/hacker.jpg', 1);
 $job2 = new Job('Ingeneumática 2018', 'Lider de automatización', './app/assets/static/proyectoFEA2.png', 30);
 $job3 = new Job('', 'Auxiliar de Producción', './app/assets/static/robot.jpg', 12);
 
