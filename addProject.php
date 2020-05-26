@@ -1,28 +1,6 @@
 <?php
 
-require_once('./vendor/autoload.php');
-
-use Illuminate\Database\Capsule\Manager as Capsule;
 use App\Models\{Project};
-
-$capsule = new Capsule;
-
-$capsule->addConnection([
-    'driver'    => 'mysql',
-    'host'      => 'localhost',
-    'database'  => 'intro_db',
-    'username'  => 'root',
-    'password'  => '',
-    'charset'   => 'utf8',
-    'collation' => 'utf8_unicode_ci',
-    'prefix'    => '',
-]);
-
-// Make this Capsule instance available globally via static methods... (optional)
-$capsule->setAsGlobal();
-
-// Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
-$capsule->bootEloquent();
 
 if (!empty($_POST)) {
     $project = new Project();
@@ -40,10 +18,10 @@ if (!empty($_POST)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./app/assets/static/icon.png" />
+    <link rel="shortcut icon" href="../app/assets/static/icon.png" />
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
     <title>Add Project</title>
-    <link rel="stylesheet" href="./app/assets/styles/form.css">
+    <link rel="stylesheet" href="../app/assets/styles/form.css">
 </head>
 
 <body>

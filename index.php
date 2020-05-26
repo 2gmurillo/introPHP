@@ -1,6 +1,6 @@
 <?php
-require_once('./vendor/autoload.php');
-require_once('./data.php');
+require_once('../data.php');
+// require_once __DIR__ . "./data.php";
 // echo "<script>console.log('Jobs: " . $jobs . "' );</script>";
 // echo "<script>console.log('Projects: " . $projects . "' );</script>";
 
@@ -12,10 +12,10 @@ require_once('./data.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./app/assets/static/icon.png" />
+    <link rel="shortcut icon" href="../app/assets/static/icon.png" />
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
     <title>CV Juango</title>
-    <link rel="stylesheet" href="./app/assets/styles/style.css">
+    <link rel="stylesheet" href="../app/assets/styles/style.css">
 </head>
 
 <body>
@@ -25,20 +25,20 @@ require_once('./data.php');
                 <div class="navbar__brand"><?= $brand ?></div>
                 <div class="navbar__menu">
                     <ul>
-                        <li>Contact</li>
-                        <li>About</li>
-                        <li>Projects</li>
-                        <li>Login</li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#perfil">Perfil</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#">Login</a></li>
                     </ul>
                 </div>
             </div>
         </header>
         <main class="main">
-            <section class="hero">
+            <section id="contact" class="contact">
                 <div class="overlay">
-                    <div class="hero__container">
-                        <div class="hero__data">
-                            <div class="hero__data--container">
+                    <div class="contact__container">
+                        <div class="contact__data">
+                            <div class="contact__data--container">
                                 <h2><?= $name ?></h2>
                                 <h3><?= $profession ?></h3>
                                 <ul>
@@ -49,15 +49,15 @@ require_once('./data.php');
                                 </ul>
                             </div>
                         </div>
-                        <div class="hero__image">
-                            <div class="hero__image--container">
+                        <div class="contact__image">
+                            <div class="contact__image--container">
                                 <img src=<?= $profilePicture ?> alt=<?= $name ?>>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <section class="perfil">
+            <section id="perfil" class="perfil">
                 <div class="overlay">
                     <div class="perfil__container">
                         <div class="perfil__title">
@@ -72,7 +72,7 @@ require_once('./data.php');
                     </div>
                 </div>
             </section>
-            <section class="projects">
+            <section id="projects" class="projects">
                 <div class="overlay">
                     <div class="projects__container">
                         <div class="projects__title">
@@ -85,7 +85,7 @@ require_once('./data.php');
                                 } ?>
                                 <div class="card2">
                                     <div class="card2__image">
-                                        <img src=<?php echo './app/assets/static/' . $project->picture ?> alt="">
+                                        <img src=<?php echo '../app/assets/static/' . $project->picture ?> alt="">
                                     </div>
                                     <div class="card2__description">
                                         <div class="card2__description--container">
