@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 require_once('../vendor/autoload.php');
 
 use Illuminate\Database\Capsule\Manager as Capsule;
+use Aura\Router\RouterContainer;
 
 $capsule = new Capsule;
 
@@ -26,12 +27,25 @@ $capsule->setAsGlobal();
 // Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
 $capsule->bootEloquent();
 
-$route = $_GET['route'] ?? '/';
+$request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
+    $_SERVER,
+    $_GET,
+    $_POST,
+    $_COOKIE,
+    $_FILES
+);
 
-if ($route == '/') {
-    require_once '../index.php';
-} elseif ($route == 'addJob') {
-    require_once '../addJob.php';
-} elseif ($route == 'addProject') {
-    require_once '../addProject.php';
+$routerContainer = new RouterContainer();
+$map = $routerContainer->getMap();
+$map->get('main', '/introPHP/', '../main.php');
+$map->get('addJob', '/introPHP/job/add', '../addJob.php');
+$map->get('addProject', '/introPHP/project/add', '../addProject.php');
+
+$matcher = $routerContainer->getMatcher();
+$route = $matcher->match($request);
+
+if (!$route) {
+    echo "Esta ruta no coincide";
+} else {
+    require_once $route->handler;
 }

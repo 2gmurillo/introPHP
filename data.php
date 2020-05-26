@@ -9,7 +9,7 @@ $email = '2gmurillo@gmail.com';
 $phone = '(+57) 3128216528';
 $linkedin = 'www.linkedin.com';
 $location = 'Medellín, Colombia';
-$profilePicture = '../app/assets/static/Juango.png';
+$profilePicture = './app/assets/static/Juango.png';
 $profileDescription = '4 años de experiencia en el campo de la automatización industrial, 4 años desarrollando habilidades y conocimientos que ayudaron a proyectarme y a despertar un gran interés por aprender y aplicar nuevas tecnologías.';
 
 $jobs = Job::all();
@@ -24,7 +24,7 @@ $projects = Project::all();
         } ?>
         <div class="card">
             <div class="card__image">
-                <img src=<?php echo '../app/assets/static/' . $job->picture ?> alt="">
+                <img src=<?php echo './app/assets/static/' . $job->picture ?> alt=<?= $job->picture ?> />
             </div>
             <div class="card__description">
                 <h3><?= $job->title ?></h3>

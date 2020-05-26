@@ -10,12 +10,12 @@ require_once('../data.php');
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../app/assets/static/icon.png" />
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="app/assets/static/icon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./app/assets/styles/style.css" />
     <title>CV Juango</title>
-    <link rel="stylesheet" href="../app/assets/styles/style.css">
 </head>
 
 <body>
@@ -25,10 +25,12 @@ require_once('../data.php');
                 <div class="navbar__brand"><?= $brand ?></div>
                 <div class="navbar__menu">
                     <ul>
-                        <li><a href="#contact">Contact</a></li>
-                        <li><a href="#perfil">Perfil</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#">Login</a></li>
+                        <li><a href="/introPHP/#contact">Contact</a></li>
+                        <li><a href="/introPHP/#perfil">Perfil</a></li>
+                        <li><a href="/introPHP/#projects">Projects</a></li>
+                        <li><a href="/introPHP/job/add">addJob</a></li>
+                        <li><a href="/introPHP/project/add">addProject</a></li>
+                        <li><a href="/introPHP/#">Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -51,7 +53,7 @@ require_once('../data.php');
                         </div>
                         <div class="contact__image">
                             <div class="contact__image--container">
-                                <img src=<?= $profilePicture ?> alt=<?= $name ?>>
+                                <img src=<?= $profilePicture ?> alt=<?= $name ?> />
                             </div>
                         </div>
                     </div>
@@ -85,7 +87,7 @@ require_once('../data.php');
                                 } ?>
                                 <div class="card2">
                                     <div class="card2__image">
-                                        <img src=<?php echo '../app/assets/static/' . $project->picture ?> alt="">
+                                        <img src=<?php echo './app/assets/static/' . $project->picture ?> alt=<?= $project->picture ?> />
                                     </div>
                                     <div class="card2__description">
                                         <div class="card2__description--container">

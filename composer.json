@@ -13,6 +13,8 @@
     }
   },
   "require": {
-    "illuminate/database": "^7.12"
+    "illuminate/database": "^7.12",
+    "laminas/laminas-diactoros": "^2.3",
+    "aura/router": "^3.1"
   }
 }
