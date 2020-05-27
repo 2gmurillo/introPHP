@@ -22,10 +22,10 @@ if (!empty($_POST)) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="../app/assets/static/icon.png" />
+    <link rel="shortcut icon" href="./assets/static/icon.png" />
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
     <title>Add Job</title>
-    <link rel="stylesheet" href="../app/assets/styles/form.css" />
+    <link rel="stylesheet" href="./assets/styles/form.css" />
 </head>
 
 <body>

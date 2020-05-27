@@ -37,7 +37,7 @@ $request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
 
 $routerContainer = new RouterContainer();
 $map = $routerContainer->getMap();
-$map->get('main', '/introPHP/', '../main.php');
+$map->get('index', '/introPHP/', '../index.php');
 $map->get('addJob', '/introPHP/job/add', '../addJob.php');
 $map->get('addProject', '/introPHP/project/add', '../addProject.php');
 

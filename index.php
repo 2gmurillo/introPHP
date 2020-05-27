@@ -12,9 +12,9 @@ require_once('../data.php');
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="app/assets/static/icon.png" />
+    <link rel="shortcut icon" href="../assets/static/icon.png" />
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./app/assets/styles/style.css" />
+    <link rel="stylesheet" href="../assets/styles/style.css" />
     <title>CV Juango</title>
 </head>
 
@@ -87,7 +87,7 @@ require_once('../data.php');
                                 } ?>
                                 <div class="card2">
                                     <div class="card2__image">
-                                        <img src=<?php echo './app/assets/static/' . $project->picture ?> alt=<?= $project->picture ?> />
+                                        <img src=<?php echo '../assets/static/' . $project->picture ?> alt=<?= $project->picture ?> />
                                     </div>
                                     <div class="card2__description">
                                         <div class="card2__description--container">

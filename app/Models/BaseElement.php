@@ -5,7 +5,7 @@ namespace App\Models;
 class BaseElement
 {
     // private $company; /* Inaccesible fuera de este scope */
-    protected $company; /* Tmbién accesible desde las clases hijas */
+    protected $company; /* También accesible desde las clases hijas */
     public $title;
     public $picture;
     public $visible = true;
