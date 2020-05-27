@@ -37,9 +37,18 @@ $request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
 
 $routerContainer = new RouterContainer();
 $map = $routerContainer->getMap();
-$map->get('index', '/introPHP/', '../index.php');
-$map->get('addJob', '/introPHP/job/add', '../addJob.php');
-$map->get('addProject', '/introPHP/project/add', '../addProject.php');
+$map->get('index', '/introPHP/', [
+    'controller' => 'App\Controllers\IndexController',
+    'action' => 'indexAction'
+]);
+$map->get('addJob', '/introPHP/job/add', [
+    // 'controller' => 'App\Controllers\IndexController',
+    // 'action' => 'indexAction'
+]);
+$map->get('addProject', '/introPHP/project/add', [
+    // 'controller' => 'App\Controllers\IndexController',
+    // 'action' => 'indexAction'
+]);
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
@@ -47,5 +56,11 @@ $route = $matcher->match($request);
 if (!$route) {
     echo "Esta ruta no coincide";
 } else {
-    require_once $route->handler;
+    // require_once $route->handler;
+    $handlerData = $route->handler;
+    $controllerName = $handlerData['controller'];
+    $actionName = $handlerData['action'];
+
+    $controller = new $controllerName;
+    $controller->$actionName();
 }
