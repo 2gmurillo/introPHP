@@ -1,10 +1,29 @@
-<?php
-require_once('../data.php');
-// require_once __DIR__ . "./data.php";
-// echo "<script>console.log('Jobs: " . $jobs . "' );</script>";
-// echo "<script>console.log('Projects: " . $projects . "' );</script>";
-
-?>
+<?php function printArray($array)
+{ ?>
+    <?php foreach ($array as $job) { ?>
+        <?php if ($job->visible == false) {
+            continue;
+        } ?>
+        <div class="card">
+            <div class="card__image">
+                <img src=<?php echo './assets/static/' . $job->picture ?> alt=<?= $job->picture ?> />
+            </div>
+            <div class="card__description">
+                <h3><?= $job->title ?></h3>
+                <p><?= $job->company ?></p>
+            </div>
+            <div class="card__details">
+                <h3><?= $job->getDurationAsString(); ?></h3>
+                <h4>Funciones:</h4>
+                <ul>
+                    <li><?= $job->function1 ?></li>
+                    <li><?= $job->function2 ?></li>
+                    <li><?= $job->function3 ?></li>
+                </ul>
+            </div>
+        </div>
+    <?php } ?>
+<?php } ?>
 
 <!DOCTYPE html>
 <html lang="en">

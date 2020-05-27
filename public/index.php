@@ -42,12 +42,12 @@ $map->get('index', '/introPHP/', [
     'action' => 'indexAction'
 ]);
 $map->get('addJob', '/introPHP/job/add', [
-    // 'controller' => 'App\Controllers\IndexController',
-    // 'action' => 'indexAction'
+    'controller' => 'App\Controllers\JobsController',
+    'action' => 'getAddJobAction'
 ]);
 $map->get('addProject', '/introPHP/project/add', [
-    // 'controller' => 'App\Controllers\IndexController',
-    // 'action' => 'indexAction'
+    'controller' => 'App\Controllers\ProjectsController',
+    'action' => 'getAddProjectAction'
 ]);
 
 $matcher = $routerContainer->getMatcher();
