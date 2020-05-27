@@ -8,6 +8,10 @@ body {
   color: #f2f2f2;
   font-size: calc(1em + 1vw);
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 .container {
   min-height: 100vh;
   display: flex;
@@ -23,10 +27,10 @@ body {
 }
 .container form input {
   width: 500px;
-  height: 70px;
+  height: 60px;
   margin: 5px 0;
   border-radius: 10px;
-  font-size: 36px;
+  font-size: 32px;
   padding-left: 15px;
   padding-right: 15px;
   border: none;
@@ -41,7 +45,8 @@ body {
   font-size: 1em;
   cursor: pointer;
   border: 1px solid #f2f2f2;
-  margin-top: 20px;
+  margin-top: 10px;
+  text-align: center;
 }
 .btn:hover {
   background-color: #f2f2f2;

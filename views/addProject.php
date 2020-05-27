@@ -13,12 +13,13 @@
 <body>
     <div class="container">
         <h1>Add Project</h1>
-        <form action="addProject.php" method="POST">
+        <form action="/introPHP/project/add" method="POST">
             <input type="text" name="company" id="company" placeholder="Company" />
             <input type="text" name="title" id="title" placeholder="Title" />
             <input type="text" name="picture" id="picture" placeholder="Picture" />
             <button class="btn" type="submit">Save</button>
         </form>
+        <a href="/introPHP/" class="btn" type="button">Back</a>
     </div>
 </body>
 

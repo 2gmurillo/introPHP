@@ -49,6 +49,14 @@ $map->get('addProject', '/introPHP/project/add', [
     'controller' => 'App\Controllers\ProjectsController',
     'action' => 'getAddProjectAction'
 ]);
+$map->post('saveJob', '/introPHP/job/add', [
+    'controller' => 'App\Controllers\JobsController',
+    'action' => 'getAddJobAction'
+]);
+$map->post('saveProject', '/introPHP/project/add', [
+    'controller' => 'App\Controllers\ProjectsController',
+    'action' => 'getAddProjectAction'
+]);
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
@@ -56,11 +64,10 @@ $route = $matcher->match($request);
 if (!$route) {
     echo "Esta ruta no coincide";
 } else {
-    // require_once $route->handler;
     $handlerData = $route->handler;
     $controllerName = $handlerData['controller'];
     $actionName = $handlerData['action'];
 
     $controller = new $controllerName;
-    $controller->$actionName();
+    $controller->$actionName($request);
 }

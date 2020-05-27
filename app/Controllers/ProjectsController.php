@@ -6,13 +6,14 @@ use App\Models\{Project};
 
 class ProjectsController
 {
-    public function getAddProjectAction()
+    public function getAddProjectAction($request)
     {
-        if (!empty($_POST)) {
+        if ($request->getMethod() == 'POST') {
+            $postData = $request->getParsedBody();
             $project = new Project();
-            $project->company = $_POST['company'];
-            $project->title = $_POST['title'];
-            $project->picture = $_POST['picture'];
+            $project->company = $postData['company'];
+            $project->title = $postData['title'];
+            $project->picture = $postData['picture'];
             $project->save();
         }
         include_once '../views/addProject.php';
