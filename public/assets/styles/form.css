@@ -6,26 +6,26 @@ body {
   background-color: #000;
   font-family: "PT Sans", sans-serif;
   color: #f2f2f2;
-  font-size: calc(1em + 1vw);
 }
 a {
   text-decoration: none;
   color: inherit;
 }
-.container {
+.container2 {
+  font-size: calc(1em + 1vw);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.container form {
+.container2 form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.container form input {
+.container2 form input {
   width: 500px;
   height: 60px;
   margin: 5px 0;
@@ -35,7 +35,7 @@ a {
   padding-right: 15px;
   border: none;
 }
-.btn {
+.btn2 {
   box-sizing: border-box;
   background-color: rgba(0, 0, 0, 0);
   width: 200px;
@@ -48,7 +48,7 @@ a {
   margin-top: 10px;
   text-align: center;
 }
-.btn:hover {
+.btn2:hover {
   background-color: #f2f2f2;
   color: #2f2f2f;
   border: 1px solid #2f2f2f;

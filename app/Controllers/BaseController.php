@@ -14,7 +14,7 @@ class BaseController
             'cache' => false,
         ]);
     }
-    public function renderHTML($fileName, $data = [])
+    public function renderHTML($fileName, $data = ['brand' => 'JUANGO'])
     {
         return new HtmlResponse ($this->templateEngine->render($fileName, $data));
     }
