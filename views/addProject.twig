@@ -3,10 +3,11 @@
 	<section class="container2">
 		<h1>Add Project</h1>
 		<div>{{ responseMessage }}</div>
-		<form action="/introPHP/project/add" method="POST">
+		<form action="/introPHP/project/add" method="POST" enctype="multipart/form-data">
 			<input type="text" name="company" id="company" placeholder="Company"/>
 			<input type="text" name="title" id="title" placeholder="Title"/>
 			<input type="text" name="picture" id="picture" placeholder="Picture"/>
+			<input type="file" name="image" placeholder="Imagen"/>
 			<button class="btn2" type="submit">Save</button>
 		</form>
 	</section>

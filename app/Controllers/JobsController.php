@@ -37,7 +37,7 @@ class JobsController extends BaseController
             }
         }
         return $this->renderHTML('addJob.twig', [
-            'responseMessage' => $responseMessage
+            'responseMessage' => $responseMessage, 'brand' => 'JUANGO'
         ]);
     }
 }

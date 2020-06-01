@@ -3,7 +3,7 @@
 	<section class="container2">
 		<h1>Add Job</h1>
 		<div>{{ responseMessage }}</div>
-		<form action="/introPHP/job/add" method="POST">
+		<form action="/introPHP/job/add" method="POST" enctype="multipart/form-data">
 			<input type="text" name="company" id="company" placeholder="Company"/>
 			<input type="text" name="title" id="title" placeholder="Title"/>
 			<input type="text" name="picture" id="picture" placeholder="Picture"/>
@@ -11,6 +11,7 @@
 			<input type="text" name="function1" id="function1" placeholder="Function 1"/>
 			<input type="text" name="function2" id="function2" placeholder="Function 2"/>
 			<input type="text" name="function3" id="function3" placeholder="Function 3"/>
+			<input type="file" name="image" placeholder="Imagen"/>
 			<button class="btn2" type="submit">Save</button>
 		</form>
 	</section>

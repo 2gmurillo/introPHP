@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use Laminas\Diactoros\Response\HtmlResponse;
 
 class BaseController
@@ -14,8 +15,8 @@ class BaseController
             'cache' => false,
         ]);
     }
-    public function renderHTML($fileName, $data = ['brand' => 'JUANGO'])
+    public function renderHTML($fileName, $data = [])
     {
-        return new HtmlResponse ($this->templateEngine->render($fileName, $data));
+        return new HtmlResponse($this->templateEngine->render($fileName, $data));
     }
 }

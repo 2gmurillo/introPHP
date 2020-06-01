@@ -31,7 +31,7 @@ class ProjectsController extends BaseController
             }
         }
         return $this->renderHTML('addProject.twig', [
-            'responseMessage' => $responseMessage
+            'responseMessage' => $responseMessage, 'brand' => 'JUANGO'
         ]);
     }
 }
