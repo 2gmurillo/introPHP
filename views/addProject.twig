@@ -4,10 +4,12 @@
 		<h1>Add Project</h1>
 		<div>{{ responseMessage }}</div>
 		<form action="/introPHP/project/add" method="POST" enctype="multipart/form-data">
-			<input type="text" name="company" id="company" placeholder="Company"/>
-			<input type="text" name="title" id="title" placeholder="Title"/>
-			<input type="text" name="picture" id="picture" placeholder="Picture"/>
-			<input type="file" name="image" placeholder="Imagen"/>
+			<input class="input" type="text" name="company" id="company" placeholder="Company"/>
+			<input class="input" type="text" name="title" id="title" placeholder="Title"/>
+			<div class="input-file">
+				<p>Picture</p>
+				<input type="file" name="picture" placeholder="Picture"/>
+			</div>
 			<button class="btn2" type="submit">Save</button>
 		</form>
 	</section>
