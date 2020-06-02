@@ -10,21 +10,25 @@ class ProjectsController extends BaseController
     public function getAddProjectAction($request)
     {
         $responseMessage = null;
-
-
         if ($request->getMethod() == 'POST') {
             $postData = $request->getParsedBody();
+            $files = $request->getUploadedFiles();
+            $picture = $files['picture'];
+            if ($picture->getError() == UPLOAD_ERR_OK) {
+                $fileName = $picture->getClientFilename();
+                $picture->moveTo("../public/assets/static/$fileName");
+            }
             $projectValidator = v::key('company', v::stringType()->notEmpty())
-                ->key('title', v::stringType()->notEmpty())
-                ->key('picture', v::stringType()->notEmpty());
+                ->key('title', v::stringType()->notEmpty());
 
             try {
                 $projectValidator->assert($postData);
                 $project = new Project();
+                var_dump($picture);
                 $project->company = $postData['company'];
                 $project->title = $postData['title'];
-                $project->picture = $postData['picture'];
-                // $project->save();
+                $project->picture = $fileName;
+                $project->save();
                 $responseMessage = '¡Proyecto guardado exitosamente!';
             } catch (\Exception $e) {
                 $responseMessage = $e->getMessage();
