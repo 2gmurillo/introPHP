@@ -45,11 +45,13 @@ $map->get('index', '/introPHP/', [
 ]);
 $map->get('addJob', '/introPHP/job/add', [
     'controller' => 'App\Controllers\JobsController',
-    'action' => 'getAddJobAction'
+    'action' => 'getAddJobAction',
+    'auth' => true
 ]);
 $map->get('addProject', '/introPHP/project/add', [
     'controller' => 'App\Controllers\ProjectsController',
-    'action' => 'getAddProjectAction'
+    'action' => 'getAddProjectAction',
+    'auth' => true
 ]);
 $map->get('addUser', '/introPHP/user/add', [
     'controller' => 'App\Controllers\UsersController',
@@ -96,6 +98,7 @@ if (!$route) {
     $actionName = $handlerData['action'];
     $needsAuth = $handlerData['auth'] ?? false;
     $sessionUserId = $_SESSION['userId'] ?? null;
+    $isAdmin = $_SESSION['isAdmin'] ?? null;
     if ($needsAuth && !$sessionUserId) {
         header('Location: /introPHP/login');
     } else {
@@ -107,6 +110,10 @@ if (!$route) {
             }
         }
         http_response_code($response->getStatusCode());
-        echo $response->getBody();
+        if (!$isAdmin && ($actionName == 'getAdminAction' || $actionName == 'getAddJobAction' || $actionName == 'getAddProjectAction')) {
+            header('Location: /introPHP/');
+        } else {
+            echo $response->getBody();
+        }
     }
 }

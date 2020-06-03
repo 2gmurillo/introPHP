@@ -22,6 +22,7 @@ class AuthController extends BaseController
       if (\password_verify($getData['password'], $user->password)) {
         $_SESSION['userId'] = $user->id;
         if ($user->email == 'samy@evertec.com') {
+          $_SESSION['isAdmin'] = true;
           return new RedirectResponse('/introPHP/admin');
         } else {
           return new RedirectResponse('/introPHP/');
@@ -39,6 +40,7 @@ class AuthController extends BaseController
   public function getLogoutAction()
   {
     unset($_SESSION['userId']);
+    unset($_SESSION['isAdmin']);
     return new RedirectResponse('/introPHP/');
   }
 }
