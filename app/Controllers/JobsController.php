@@ -28,7 +28,6 @@ class JobsController extends BaseController
             try {
                 $jobValidator->assert($postData);
                 $job = new Job();
-                var_dump($picture);
                 $job->company = $postData['company'];
                 $job->title = $postData['title'];
                 $job->picture = $fileName;
@@ -43,7 +42,7 @@ class JobsController extends BaseController
             }
         }
         return $this->renderHTML('addJob.twig', [
-            'responseMessage' => $responseMessage, 'brand' => 'JUANGO'
+            'responseMessage' => $responseMessage, 'brand' => 'ADMIN'
         ]);
     }
 }

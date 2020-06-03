@@ -1,0 +1,13 @@
+{% extends "layout.twig" %}
+{% block main %}
+	<section class="container2">
+		<h1>Add User</h1>
+		<div>{{ responseMessage }}</div>
+		<form action="/introPHP/user/add" method="POST">
+			<input class="input" type="text" name="name" placeholder="Nombre"/>
+			<input class="input" type="email" name="email" id="email" placeholder="Correo"/>
+			<input class="input" type="password" name="password" id="password" placeholder="Contraseña"/>
+			<button class="btn2" type="submit">Save</button>
+		</form>
+	</section>
+</html>{% endblock %}

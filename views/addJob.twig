@@ -1,5 +1,18 @@
 {% extends "layout.twig" %}
 {% block main %}
+	<header class="header">
+		<div class="navbar">
+			<div class="navbar__brand">{{brand}}</div>
+			<div class="navbar__menu">
+				<ul>
+					<li><a href="/introPHP/job/add">addJob</a></li>
+					<li><a href="/introPHP/project/add">addProject</a></li>
+					<li><a href="/introPHP/logout">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+
 	<section class="container2">
 		<h1>Add Job</h1>
 		<div>{{ responseMessage }}</div>

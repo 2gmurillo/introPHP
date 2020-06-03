@@ -24,7 +24,6 @@ class ProjectsController extends BaseController
             try {
                 $projectValidator->assert($postData);
                 $project = new Project();
-                var_dump($picture);
                 $project->company = $postData['company'];
                 $project->title = $postData['title'];
                 $project->picture = $fileName;
@@ -35,7 +34,7 @@ class ProjectsController extends BaseController
             }
         }
         return $this->renderHTML('addProject.twig', [
-            'responseMessage' => $responseMessage, 'brand' => 'JUANGO'
+            'responseMessage' => $responseMessage, 'brand' => 'ADMIN'
         ]);
     }
 }

@@ -5,6 +5,8 @@ error_reporting(E_ALL);
 
 require_once('../vendor/autoload.php');
 
+session_start();
+
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Aura\Router\RouterContainer;
 
@@ -49,6 +51,23 @@ $map->get('addProject', '/introPHP/project/add', [
     'controller' => 'App\Controllers\ProjectsController',
     'action' => 'getAddProjectAction'
 ]);
+$map->get('addUser', '/introPHP/user/add', [
+    'controller' => 'App\Controllers\UsersController',
+    'action' => 'getAddUserAction'
+]);
+$map->get('loginForm', '/introPHP/login', [
+    'controller' => 'App\Controllers\AuthController',
+    'action' => 'getLoginAction'
+]);
+$map->get('admin', '/introPHP/admin', [
+    'controller' => 'App\Controllers\AdminController',
+    'action' => 'getAdminAction',
+    'auth' => true
+]);
+$map->get('logout', '/introPHP/logout', [
+    'controller' => 'App\Controllers\AuthController',
+    'action' => 'getLogoutAction'
+]);
 $map->post('saveJob', '/introPHP/job/add', [
     'controller' => 'App\Controllers\JobsController',
     'action' => 'getAddJobAction'
@@ -56,6 +75,14 @@ $map->post('saveJob', '/introPHP/job/add', [
 $map->post('saveProject', '/introPHP/project/add', [
     'controller' => 'App\Controllers\ProjectsController',
     'action' => 'getAddProjectAction'
+]);
+$map->post('saveUser', '/introPHP/user/add', [
+    'controller' => 'App\Controllers\UsersController',
+    'action' => 'getAddUserAction'
+]);
+$map->post('auth', '/introPHP/auth', [
+    'controller' => 'App\Controllers\AuthController',
+    'action' => 'postLoginAction'
 ]);
 
 $matcher = $routerContainer->getMatcher();
@@ -67,9 +94,19 @@ if (!$route) {
     $handlerData = $route->handler;
     $controllerName = $handlerData['controller'];
     $actionName = $handlerData['action'];
-
-    $controller = new $controllerName;
-    $response = $controller->$actionName($request);
-
-    echo $response->getBody();
+    $needsAuth = $handlerData['auth'] ?? false;
+    $sessionUserId = $_SESSION['userId'] ?? null;
+    if ($needsAuth && !$sessionUserId) {
+        header('Location: /introPHP/login');
+    } else {
+        $controller = new $controllerName;
+        $response = $controller->$actionName($request);
+        foreach ($response->getHeaders() as $name => $values) {
+            foreach ($values as $value) {
+                header(sprintf('%s: %s', $name, $value), false);
+            }
+        }
+        http_response_code($response->getStatusCode());
+        echo $response->getBody();
+    }
 }
